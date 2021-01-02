@@ -1,15 +1,14 @@
 import React, { Fragment, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Repos from "../repos/Repos";
 import Check from "bootstrap-icons/icons/check2.svg";
 import X from "bootstrap-icons/icons/x-circle.svg";
 import GithubContext from "../../context/github/githubContext";
 
-const User = ({ getUserRepos, repos, match }) => {
+const User = ({ match }) => {
   const githubContext = useContext(GithubContext);
 
-  const { user, loading, getUser } = githubContext;
+  const { getUserRepos, repos, user, loading, getUser } = githubContext;
 
   useEffect(() => {
     getUser(match.params.login);
@@ -115,11 +114,6 @@ const User = ({ getUserRepos, repos, match }) => {
       <Repos repos={repos} />
     </div>
   );
-};
-
-User.propTypes = {
-  getUserRepos: PropTypes.func.isRequired,
-  repos: PropTypes.array.isRequired,
 };
 
 export default User;
