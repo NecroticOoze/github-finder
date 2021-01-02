@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import GithubContext from "../../context/github/githubContext";
 import AlertContext from "../../context/alert/alertContext";
 
@@ -22,7 +22,7 @@ const Search = () => {
   };
 
   return (
-    <Fragment>
+    <div className="container my-3">
       <form onSubmit={onSubmit}>
         <div className="row">
           <div className="col-md-10 ">
@@ -52,7 +52,7 @@ const Search = () => {
           </button>
         </div>
       )}
-    </Fragment>
+    </div>
   );
 };
 
