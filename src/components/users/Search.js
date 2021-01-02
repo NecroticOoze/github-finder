@@ -1,9 +1,9 @@
 import React, { Fragment, useState, useContext } from "react";
-import GithubContext from '../../context/github/githubContext'
+import GithubContext from "../../context/github/githubContext";
 import PropTypes from "prop-types";
 
-const Search = ({ showClear, clearUsers, setAlert }) => {
-  const githubContext = useContext(GithubContext)
+const Search = ({ setAlert }) => {
+  const githubContext = useContext(GithubContext);
 
   const [text, setText] = useState("");
 
@@ -40,11 +40,11 @@ const Search = ({ showClear, clearUsers, setAlert }) => {
           </div>
         </div>
       </form>
-      {showClear && (
+      {githubContext.users.length > 0 && (
         <div className="d-grid gap-2 my-3">
           <button
             className="btn btn-secondary bg-gradient"
-            onClick={clearUsers}
+            onClick={githubContext.clearUsers}
           >
             Clear
           </button>
@@ -55,8 +55,6 @@ const Search = ({ showClear, clearUsers, setAlert }) => {
 };
 
 Search.propTypes = {
-  clearUsers: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired,
   setAlert: PropTypes.func.isRequired,
 };
 
